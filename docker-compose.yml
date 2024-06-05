@@ -1,0 +1,28 @@
+version: "3.8"  # Specify the Docker Compose version
+
+services:
+  social_network:  # Name of your service (modify if needed)
+    build: .  # Build the image from the current directory (context)
+    ports:
+      - "5000:5000"  # Map container port 5000 to host port 5000
+    volumes:
+      - ./social_network:/app  # Mount current directory as /app inside the container
+    depends_on:
+      - mysql  # This service depends on the mysql service (modify if needed)
+    environment:
+      - DATABASE_NAME=YOUR_DATABASE_NAME  # Environment variable for database name
+      - DATABASE_USER=YOUR_DATABASE_USERNAME  # Environment variable for database user
+      - DATABASE_PASSWORD=YOUR_DATABASE_PASSWORD  # Environment variable for database password (change the password for security reasons)
+      - DATABASE_HOST=mysql  # Environment variable for database host (modify if needed)
+      - DATABASE_PORT=YOUR_DATABASE_PORT_VALUE  # Environment variable for database port (modify if needed)
+
+  mysql:  # Name of your database service (modify if needed)
+    image: mysql:8.0  # Use the official MySQL image (modify the version if needed)
+    environment:
+      - MYSQL_ROOT_PASSWORD=MYSQL_ROOT_PASSWORD  # Environment variable for MySQL root password (change the password for security reasons)
+      - MYSQL_DATABASE=MYSQL_DATABASE  # Environment variable for database name (ensure it matches the social_network service)
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persistent storage for database data
+
+volumes:
+  mysql_data:  # Define a named volume for database persistence
