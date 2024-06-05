@@ -1,0 +1,89 @@
+Collection: Social Network
+
+Signup
+
+Request:
+Method: POST
+URL: http://localhost:5000/api/signup/ (assuming the application runs on port 5000)
+Body:
+Body Type: raw
+Text:
+JSON
+{
+  "username": "johndoe",
+  "email": "johndoe@example.com",
+  "password": "password123",
+  "first_name": "John",
+  "last_name": "Doe"
+}
+
+
+Headers:
+Content-Type: application/json
+Login
+
+Request:
+Method: POST
+URL: http://localhost:5000/api/login/
+Body:
+Body Type: raw
+Text:
+JSON
+{
+  "username": "johndoe",
+  "password": "password123"
+}
+
+Headers:
+Content-Type: application/json
+
+
+Search Users
+
+Request:
+Method: GET
+URL: http://localhost:5000/api/search/?search=<keyword> (replace <keyword> with your search term)
+Headers:
+Authorization: Token <your_token_here> (replace <your_token_here> with your actual token obtained from login)
+Send Friend Request
+
+Request:
+Method: POST
+URL: http://localhost:5000/api/friend-request/
+Body:
+Body Type: raw
+Text:
+JSON
+{
+  "to_user_id": 2 (replace with the ID of the user you want to send a request to)
+}
+
+Headers:
+Authorization: Token <your_token_here> (replace <your_token_here> with your actual token)
+Content-Type: application/json
+Friend Requests
+
+Request:
+Method: GET
+URL: http://localhost:5000/api/pending-requests/
+Headers:
+Authorization: Token <your_token_here> (replace <your_token_here> with your actual token)
+Friend List
+
+Request:
+Method: GET
+URL: http://localhost:5000/api/friends/
+Headers:
+Authorization: Token <your_token_here> (replace <your_token_here> with your actual token)
+Accept/Reject Friend Request
+
+Request:
+Method: PUT
+URL: http://localhost:5000/api/friend-request/<id>/ (replace <id> with the ID of the friend request)
+Body:
+Body Type: raw
+Text:
+JSON
+{
+  "action": "accept"  // or "reject"
+}

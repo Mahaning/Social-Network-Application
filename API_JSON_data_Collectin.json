@@ -1,0 +1,162 @@
+// Note this is for refrence example
+
+
+{
+    "name": "Social Network",
+    "collection": [
+        {
+            "name": "Signup",
+            "description": "Create a new user account.",
+            "request": [
+              {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{ \"username\": \"{username}\", \"email\": \"{email}\", \"password\": \"password123\", \"first_name\": \"{firstName}\", \"last_name\": \"{lastName}\" }"
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/signup/"
+                }
+              }
+            ],
+            "data": [
+              { "username": "priya.desai@example.com", "email": "priya.desai@example.com", "firstName": "Priya", "lastName": "Desai" },
+              { "username": "amit.shah@example.com", "email": "amit.shah@example.com", "firstName": "Amit", "lastName": "Shah" },
+              { "username": "ramya.krishnan@example.com", "email": "ramya.krishnan@example.com", "firstName": "Ramya", "lastName": "Krishnan" },
+              { "username": "vivek.kumar@example.com", "email": "vivek.kumar@example.com", "firstName": "Vivek", "lastName": "Kumar" },
+              { "username": "neha.singh@example.com", "email": "neha.singh@example.com", "firstName": "Neha", "lastName": "Singh" },
+              { "username": "rahul.gupta@example.com", "email": "rahul.gupta@example.com", "firstName": "Rahul", "lastName": "Gupta" },
+              { "username": "priyanka.joshi@example.com", "email": "priyanka.joshi@example.com", "firstName": "Priyanka", "lastName": "Joshi" },
+              { "username": "sandeep.patel@example.com", "email": "sandeep.patel@example.com", "firstName": "Sandeep", "lastName": "Patel" },
+              { "username": "kirti.mehta@example.com", "email": "kirti.mehta@example.com", "firstName": "Kirti", "lastName": "Mehta" },
+              { "username": "abhishek.jain@example.com", "email": "abhishek.jain@example.com", "firstName": "Abhishek", "lastName": "Jain" }
+            ]
+          },
+          {
+            "name": "Login",
+            "description": "Authenticate a user and obtain a token for subsequent requests.",
+            "request": [
+              {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"username\": \"{username}\", \"password\": \"password123\"}\\n"
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/login/"
+                }
+              }
+            ],
+            "data": [
+              { "username": "priya.desai", "password": "password123" },  
+              { "username": "amit.shah", "password": "password123" },
+              { "username": "ramya.krishnan", "password": "password123" },
+              { "username": "vivek.kumar", "password": "password123" },
+              { "username": "neha.singh", "password": "password123" },
+              { "username": "rahul.gupta", "password": "password123" },
+              { "username": "priyanka.joshi", "password": "password123" },
+              { "username": "sandeep.patel", "password": "password123" },
+              { "username": "kirti.mehta", "password": "password123" },
+              { "username": "abhishek.jain", "password": "password123" }
+            ]
+          },
+      {
+        "name": "Search Users",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:5000/api/search/?search=<keyword>"
+          }
+        }
+      },
+      {
+        "name": "Send Friend Request",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Token <your_token_here>"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"to_user_id\": 2}\n"
+          },
+          "url": {
+            "raw": "http://localhost:5000/api/friend-request/"
+          }
+        }
+      },
+      {
+        "name": "Friend Requests",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Token <your_token_here>"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:5000/api/pending-requests/"
+          }
+        }
+      },
+      {
+        "name": "Friend List",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Token <your_token_here>"
+            }
+          ],
+          "url": {
+            "raw": "http://localhost:5000/api/friends/"
+          }
+        }
+      },
+      {
+        "name": "Accept/Reject Friend Request",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Token <your_token_here>"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"action\": \"accept\"} // or \"reject\""
+          },
+          "url": {
+            "raw": "http://localhost:5000/api/friend-request/<id>/"
+          }
+        }
+      }
+    ]
+  }
+  
